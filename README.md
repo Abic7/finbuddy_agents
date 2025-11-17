@@ -6,6 +6,8 @@
 [![LM Studio](https://img.shields.io/badge/LM_Studio-local-green.svg)](https://lmstudio.ai)
 
 ---
+## 5-Day AI Agents Intensive Course with Google - 
+###  Agents Intensive - Capstone Project
 
 ## 📌 Overview
 
