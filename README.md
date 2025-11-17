@@ -112,25 +112,28 @@ print(response.choices[0].message.content)
 
 ### File Structure
 
-finbuddy/
+finbuddy_agents/
 │
 ├── agents/
-│   ├── categorizer.py
-│   ├── insights.py
-│   ├── recommender.py
-│   └── reporter.py
+│   ├── categorizer_agent.py
+│   ├── insights_agent.py
+│   ├── recommender_agent.py
+│   └── reporter_agent.py
 │
 ├── tools/
 │   ├── csv_tool.py
-│   └── memory.py
+│   └── hybrid_llm_client.py
 │
 ├── core/
-│   ├── orchestrator.py
-│   ├── hybrid_client.py
-│   └── session_manager.py
+│   ├── agent_orchestrator.py
+│   ├── agent_session.py
+│   ├── memory_bank.py
 │
 ├── data/
+│   └── sample_transactions.csv
+│
 ├── main.py
 └── README.md
+
 
 ###📦 Installation
