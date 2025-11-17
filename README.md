@@ -111,6 +111,7 @@ print(response.choices[0].message.content)
        └────────────────────────────────────────────────────────────┘
 
 ### File Structure
+
 finbuddy/
 │
 ├── agents/
