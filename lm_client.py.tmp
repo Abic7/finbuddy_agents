@@ -1,0 +1,28 @@
+# This is a failover, LM Studio client that connects to a local LM Studio instance as i am unable to access OpenAI services due to running out of credits for the fr
+import requests
+
+LM_URL = "http://192.168.50.230:1234/v1/models/gpt2-smashed/completions"
+
+def generate(prompt, max_tokens=150):
+    """
+    Sends a prompt to the local LM Studio model and returns the response text.
+    """
+    payload = {
+        "prompt": prompt,
+        "max_tokens": max_tokens,
+        "temperature": 0.7
+    }
+    try:
+        response = requests.post(LM_URL, json=payload)
+        response.raise_for_status()
+        data = response.json()
+        # LM Studio may return 'text' in choices or directly
+        if "choices" in data:
+            return data["choices"][0]["text"]
+        elif "text" in data:
+            return data["text"]
+        else:
+            return str(data)
+    except Exception as e:
+        print(f"[LM CLIENT ERROR] {e}")
+        return "ERROR"

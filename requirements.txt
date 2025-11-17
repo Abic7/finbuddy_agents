@@ -1,0 +1,6 @@
+openai>=1.40.0
+pandas
+python-dotenv
+rich
+tenacity
+tqdm

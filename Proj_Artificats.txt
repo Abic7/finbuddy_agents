@@ -1,0 +1,144 @@
+High Level Arch
+                    ┌───────────────────────────┐
+                    │      User's CSV File      │
+                    └─────────────┬─────────────┘
+                                  │
+                                  ▼
+                         ┌────────────────┐
+                         │   CSV Tool     │
+                         │ (tools/csv...) │
+                         └───────┬────────┘
+                                 │  Raw DataFrame
+                                 ▼
+                     ┌───────────────────────────┐
+                     │    Categorizer Agent      │
+                     │ agents/categorizer_agent  │
+                     └─────────────┬─────────────┘
+                                   │ Categorized DF
+                                   ▼
+                     ┌───────────────────────────┐
+                     │      Insights Agent       │
+                     │ agents/insights_agent     │
+                     │  + MemoryBank (core/)     │
+                     └─────────────┬─────────────┘
+                                   │ Insights
+                                   ▼
+                     ┌───────────────────────────┐
+                     │   Recommender Agent       │
+                     │ agents/recommender_agent  │
+                     └─────────────┬─────────────┘
+                                   │ Recommendations
+                                   ▼
+                     ┌───────────────────────────┐
+                     │      Reporter Agent       │
+                     │ agents/reporter_agent     │
+                     └─────────────┬─────────────┘
+                                   │ Final Report
+                                   ▼
+                           ┌─────────────────┐
+                           │    CLI Output    │
+                           │    (main.py)     │
+                           └─────────────────┘
+
+       ┌────────────────────────────────────────────────────────────┐
+       │           Session (core/agent_session.py)                  │
+       └────────────────────────────────────────────────────────────┘
+
+       ┌────────────────────────────────────────────────────────────┐
+       │           MemoryBank (core/memory_bank.py)                 │
+       └────────────────────────────────────────────────────────────┘
+
+LM STUDIO IP :http://192.168.50.230:1234
+LM Studio Model: openai/gpt-oss-20b
+
+YouTube Video Script (3 minutes)
+[0:00 – 0:10] — Opening
+
+Narrator:
+"Hi everyone, this is my OpenAI Agents Capstone project — FinBuddy, a multi-agent personal finance assistant designed to automatically analyze your spending and give you actionable insights."
+
+[0:10 – 0:30] — Problem
+
+Narrator:
+“Most people download their bank transactions as CSV files.
+But raw CSVs are messy — categories are inconsistent, transactions are unclear, and there's no simple way to extract insights.”
+
+[0:30 – 0:55] — Why Agents?
+
+Narrator:
+“I designed FinBuddy using a multi-agent architecture because each part of the financial analysis pipeline requires different reasoning.
+Categorization, pattern detection, recommendations, and reporting are distinct tasks — and agents allow each to operate independently, in sequence, with shared memory and session state.”
+
+[0:55 – 1:20] — Architecture
+
+Narrator:
+“Here’s the architecture.”
+
+(Show the Mermaid or ASCII diagram.)
+
+Narrator:
+“FinBuddy uses four LLM-powered agents:
+
+CategorizerAgent — classifies transactions
+
+InsightsAgent — analyzes patterns and spending behavior
+
+RecommenderAgent — generates financial suggestions
+
+ReporterAgent — produces a structured financial report
+
+It also includes:
+
+A CSV Tool for ingestion
+
+A Session Manager for state
+
+A MemoryBank to learn from past behavior
+
+An Orchestrator that connects everything together”
+
+[1:20 – 1:45] — Demo
+
+Narrator:
+“When you run: python main.py data/sample_transactions.csv
+
+FinBuddy:
+
+Loads and cleans your CSV
+
+Categorizes unclear merchant names
+
+Identifies spending patterns
+
+Generates personalized recommendations
+
+Outputs a clean financial report
+
+All automatically.”
+
+[1:45 – 2:10] — Implementation
+
+Narrator:
+“The entire system is built using:
+
+OpenAI GPT-4.1 & GPT-4.1-mini for reasoning
+
+A multi-agent pipeline
+
+MemoryBank for long-term learning
+
+Observability tools for logging and tracing
+
+A modular, testable codebase with clear separation of agents and tools”
+
+[2:10 – 2:40] — Value
+
+Narrator:
+“The value of FinBuddy is personal financial clarity.
+Within seconds, it transforms confusing bank data into clear insights and actionable recommendations — like a miniature financial advisor that runs locally.”
+
+[2:40 – 3:00] — Closing
+
+Narrator:
+“If you’d like to explore or extend the system, everything is open-source in my repository.
+Thanks for watching, and I hope FinBuddy helps you take control of your financial future!”
